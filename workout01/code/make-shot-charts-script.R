@@ -9,6 +9,7 @@
 library(jpeg)
 library(grid)
 library(ggplot2)
+
 court_file <- "images/nba-court.jpg"
 
 court_image <- rasterGrob(
@@ -17,7 +18,7 @@ court_image <- rasterGrob(
   height = unit(1, "npc")
 )
 
-shots_data <-  read.csv(file = "data/shots-data.csv", stringsAsFactors = FALSE, sep = ",")
+shots_data <- read.csv(file = "data/shots-data.csv", stringsAsFactors = FALSE, sep = ",")
 
 
 curry_shot_chart <- ggplot(data = shots_data[shots_data$name == "Stephen Curry",]) + 
@@ -73,7 +74,7 @@ dev.off()
 
 pdf(file = "images/klay-thompson-shot-chart.pdf", width = 6.5, height = 5)
 klay_shot_chart
-dev.off
+dev.off()
 
 shots_chart <- ggplot(shots_data) +
   annotation_custom(court_image, -250, 250, -50, 420) + 
