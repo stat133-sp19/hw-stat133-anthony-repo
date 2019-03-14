@@ -1,0 +1,37 @@
+---
+title: "Workout01"
+output: github_document
+---
+
+```{r}
+library(dplyr)
+shots_data <- read.csv("../data/shots-data.csv", stringsAsFactors = FALSE)
+
+
+two_pt <- arrange(
+  summarise(
+  group_by(shots_data, name),
+  total = sum(shot_type == "2PT Field Goal"),
+  made = sum(shot_type == "2PT Field Goal" & shot_made_flag == "shot_yes"),
+  perc_made =  sum(shot_type == "2PT Field Goal" & shot_made_flag == "shot_yes") / sum(shot_type == "2PT Field Goal")), desc(perc_made)
+)
+
+three_pt <- arrange(
+  summarise(
+  group_by(shots_data, name),
+  total = sum(shot_type == "3PT Field Goal"),
+  made = sum(shot_type == "3PT Field Goal" & shot_made_flag == "shot_yes"),
+  perc_made =  sum(shot_type == "3PT Field Goal" & shot_made_flag == "shot_yes") / sum(shot_type == "3PT Field Goal")), desc(perc_made)
+)
+
+overall <- arrange(
+  summarise(
+  group_by(shots_data, name),
+  total = length(shot_type),
+  made = sum(shot_made_flag == "shot_yes"),
+  perc_made =  sum(shot_made_flag == "shot_yes") / length(shot_type)),
+  desc(perc_made)
+)
+
+```
+
