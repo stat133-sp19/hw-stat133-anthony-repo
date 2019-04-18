@@ -1,0 +1,12 @@
+name: Savings_Simulation
+title: Savings_Simulation
+username:
+account: anthonyshao
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 844326
+bundleId: 2020392
+url: https://anthonyshao.shinyapps.io/savings_simulation/
+when: 1555560658.82428
+asMultiple: FALSE
+asStatic: FALSE
