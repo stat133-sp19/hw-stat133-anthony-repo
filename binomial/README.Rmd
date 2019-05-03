@@ -1,0 +1,90 @@
+---
+output:
+  github_document:
+    html_preview: no
+  html_document:
+    df_print: paged
+---
+
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+## Overview
+
+"binomial" is a package that provides functions to calculate the binomial probability distribution functions
+
+
+* `bin_choose`  a function that computes the number of successes can occur in given trials
+* `bin_probability`  a function that computes the probability of getting a particular number of successes in given trials.
+* `bin_distribution`  a function that computes the probability distribution.
+* `bin_cumulative` a function that computes the cumulative distribution.
+* `bin_variable` creates a binomial random variable object (of class '"binvar"')
+* `plot()` a method to display a histrogram of the `bin_distribution` and the cumulative probability of `bin_cumulative`
+* `print()` a method to display a data frame of the object of class `binvar` 
+* `summary()` a method to display all the measures of the object of class `binvar`
+* `print.summary()` a method to display a data frame of the `summary()`
+
+
+## Motivation
+
+This package is to provide binomial probability distribution functions that illustrates binomial concepts. 
+
+
+## Installation
+
+Install the development version from GitHub via the package `"devtools"`:
+
+```{r}
+
+
+# development version from GitHub:
+#install.packages("devtools") 
+# install "binomial" (without vignettes)
+
+devtools::install_github("anthony-repo/binomial/binomial")
+# install "binomial" (with vignettes)
+devtools::install_github("anthony-repo/binomial/binomial", build_vignettes = TRUE)
+
+
+```
+
+
+##Usage 
+
+```{r}
+
+library(binomial)
+library(ggplot2)
+
+# the number of combinations to choose 2 objects from 5 objects
+bin_choose(n = 5, k = 2)
+
+# the probability of getting 2 successes out of 5 trials
+bin_probability(success = 2, trials = 5, prob = 0.5)
+
+# probability distribution and its barplot
+dis1 <- bin_distribution(trials = 5, prob = 0.5)
+dis1
+plot(dis1)
+
+# probability distribution and the cumulative probability along with its graph
+dis2 <- bin_cumulative(trials = 5, prob = 0.5)
+dis2
+plot(dis2)
+
+# creates a binomial random variable and displays its summary
+bin1 <- bin_variable(trials = 10, p = 0.3)
+bin1
+binsum1 <- summary(bin1)
+binsum1
+
+
+```
+
+

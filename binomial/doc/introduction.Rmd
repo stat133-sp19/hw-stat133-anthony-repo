@@ -1,0 +1,68 @@
+---
+title: "Introduction to Package bimonial"
+author: "Anthony Shao"
+date: "`r Sys.Date()"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to Package bimonial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(binomial)
+```
+
+
+##Binomial distribution 
+
+The package 'bimonial' is a implements functions for calculating probabilities of a binomial random variable, and related calculatiion such as the probability distribution, the expected values, variance, related cdf and pdf graphs. 
+
+
+### Function 'bin_choose'
+function bin_choose() that calculates the number of combinations in which k successes can occur in n trials.
+
+```{r}
+bin_choose(n = 5, k = 2)
+```
+
+
+### Function 'bin_probability'
+function bin_probability calculates the probability of a binomial variable with given number of successes, number of trials, and a probability value
+```{r}
+bin_probability(success = 2, trials = 5, prob = 0.5)
+```
+
+
+
+### Function 'bin_distribution' and plot
+function bin_distribution calculates the distribution of a binomial variable with given number of trials and a probability value, and returns a data frame exhibiting the distribution. Moreover, it is an object of class "bindis" and "data.frame" with a method to plot the probability histogram of the binomial distribution object
+```{r}
+dis1 <- bin_distribution(trials = 5, prob = 0.5)
+dis1
+plot(dis1)
+```
+
+###Function 'bin_cumulative' and plot
+function bin_cumulative calculates the cumulative probability of a binomial variable along with its distribution, and it returns a data frame exhibiting the distribution and the cumulative proabbility. Also, it's an object of class "bincum" and "data.frame" with a method to plot the cumulative probability.
+```{r}
+dis2 <- bin_cumulative(trials = 5, prob = 0.5)
+dis2
+plot(dis2)
+```
+
+
+###Function 'bin_variable'
+function bin_variable creates a binomial random variable object, and it returns a list consisting of the number of trials and the probability value. The object has a print method to display its parameters. The summary method of the object displays the random variable's measures, such as trials, probability, mean, variance, mode, skewness, and kurtosis. Note that the summary itself also has a method to print itself.
+```{r}
+bin1 <- bin_variable(trials = 10, p = 0.3)
+bin1
+binsum1 <- summary(bin1)
+binsum1
+```
+
+

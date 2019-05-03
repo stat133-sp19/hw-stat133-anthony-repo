@@ -1,0 +1,36 @@
+
+```{r}
+library(binomial)
+```
+
+
+## Measures
+
+```{r}
+bin_mean(10, 0.3)
+bin_variance(10, 0.3)
+bin_mode(10, 0.3)
+bin_skewness(10, 0.3)
+bin_kurtosis(10, 0.3)
+```
+
+## Bin functions
+
+```{r}
+bin_choose(5, 2)
+
+bin_probability(2, 5, 0.5)
+
+x <- bin_distribution(5, 0.5)
+x
+plot(x)
+
+y <- bin_cumulative(10, 0.3)
+y
+plot(y)
+
+binvar <- bin_variable(10, 0.5)
+binvar
+summary(binvar)
+```
+
